@@ -1,0 +1,36 @@
+{
+  "name": "generate-mongoose-schema-from-yaml",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --compilers js:babel-register test/",
+    "lint": "./node_modules/.bin/eslint src/",
+    "build": "npm run lint && npm test && ./node_modules/.bin/babel src/  --out-dir dist/",
+    "example": "./node_modules/.bin/babel-node src/bin/mongoose-generator.js schema:all src/yml/"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "handlebars": "^4.0.5",
+    "lodash": "^4.13.1",
+    "mkdirp": "^0.5.1",
+    "node-getopt": "^0.2.3",
+    "q": "^1.4.1",
+    "yaml-with-import": "^1.0.1"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.9.0",
+    "eslint": "^3.0.1",
+    "webpack": "^1.13.1",
+    "babel-cli": "^6.10.1",
+    "babel-register": "^6.9.0",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-import": "^1.10.2",
+    "eslint-plugin-jsx-a11y": "^1.5.5",
+    "eslint-plugin-react": "^5.2.2",
+    "mocha": "^2.5.3",
+    "mocha-cli": "^1.0.1",
+    "should": "^9.0.2"
+  }
+}

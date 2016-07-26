@@ -1,0 +1,14 @@
+schema:
+  name: user
+  attributes:
+    email:
+      type: string
+      index: true
+    first_name:
+      type: string
+    last_name:
+      type: string
+    password:
+      type: buffer
+  collection: true
+  auto_index: true

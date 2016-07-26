@@ -1,0 +1,14 @@
+// DO NOT ADD CODE - THIS IS A GENERATED FILE
+
+import mongoose from 'mongoose';
+export default mongoose.model('{{ collection }}', new mongoose.Schema({
+{{#each attributes}}
+    {{ this.name }}: {
+        type: {{this.type}}
+        {{#if this.isIndexed}},index: true{{/if}}
+    },
+{{/each}} }, {
+        collection: '{{collection}}s',
+        _id: {{isIndexed}}
+    }
+));

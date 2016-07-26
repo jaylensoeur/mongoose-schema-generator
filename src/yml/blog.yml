@@ -1,0 +1,14 @@
+schema:
+  name: blog
+  attributes:
+    title:
+      type: string
+      index: true
+    description:
+      type: string
+    content:
+      type: buffer
+    tags:
+      type: [string]
+  collection: true
+  auto_index: true
