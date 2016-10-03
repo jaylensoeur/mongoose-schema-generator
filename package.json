@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "bin": {
+    "mongoose-generator": "dist/bin/mongoose-generator.js"
+  },
   "scripts": {
     "test": "./node_modules/.bin/mocha --compilers js:babel-register test/",
     "lint": "./node_modules/.bin/eslint src/",
