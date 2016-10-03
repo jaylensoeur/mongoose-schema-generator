@@ -6,6 +6,8 @@
         "semi": ["error", "always"],
         "comma-dangle": ["error", "always"],
         "no-cond-assign": ["error", "always"],
-        "no-console": "off"
+        "no-console": "off",
+        "prefer-template": 0,
+        "quote-props": 0
     }
 }

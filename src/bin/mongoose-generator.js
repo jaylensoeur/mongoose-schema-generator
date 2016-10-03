@@ -37,23 +37,23 @@ const generateSchema = () => {
 
 
 switch (controller) {
+case 'schema':
+    switch (action) {
+    case 'all':
+        generateModel();
+        generateSchema();
+        break;
     case 'schema':
-        switch(action) {
-            case 'all':
-                generateModel();
-                generateSchema();
-                break;
-            case 'schema':
-                generateSchema();
-                break;
-            case 'model':
-                generateModel();
-                break;
-            default:
-                break;
-        }
+        generateSchema();
+        break;
+    case 'model':
+        generateModel();
         break;
     default:
+        break;
+    }
+    break;
+default:
     break;
 }
 

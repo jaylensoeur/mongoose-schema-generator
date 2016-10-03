@@ -15,13 +15,13 @@ export default class Schema {
     }
 
     generate(fileName) {
-      this.generateModel(fileName);
-      this.generateSchema(fileName);
+        this.generateModel(fileName);
+        this.generateSchema(fileName);
     }
 
     generateSchema(fileName) {
         const schemaJson = this.yaml.read(fileName);
-       const fileSchema = schemaJson.schema.name.toLowerCase().replace('_', '-') + '-schema.js';
+        const fileSchema = schemaJson.schema.name.toLowerCase().replace('_', '-') + '-schema.js';
 
         const mongoose = __dirname + '/mongoose/';
         const schemaPath = __dirname + '/mongoose/schema/';
@@ -42,7 +42,7 @@ export default class Schema {
         const file = schemaJson.schema.name.toLowerCase().replace('_', '-') + '.js';
 
         const mongoose = __dirname + '/mongoose/';
-        const modelPath = __dirname +  '/mongoose/model/';
+        const modelPath = __dirname + '/mongoose/model/';
 
         if (!this.fs.existsSync(mongoose)) {
             this.fs.mkdir(mongoose);
@@ -60,7 +60,7 @@ export default class Schema {
             name.toLowerCase(),
             '-',
             'schema',
-            '.js'
+            '.js',
         ].join('');
     }
 
@@ -68,7 +68,7 @@ export default class Schema {
      * build setter methods based on attributes
      * */
     buildMethods(attributes) {
-        let methods = [];
+        const methods = [];
 
         _.forEach(attributes, (attribute, key) => {
             let attributeType = '';
@@ -77,16 +77,16 @@ export default class Schema {
             if (typeof attribute.type === 'object') {
                 attributeType = this.stringManipulator.pascalCase(attribute.type[0]);
                 isArray = true;
-            }else {
+            } else {
                 attributeType = this.stringManipulator.pascalCase(attribute.type);
             }
 
             methods.push({
-                "attributeType": attributeType,
-                "nameCamel": this.stringManipulator.camelFromUnderscore(key),
-                "namePascal": this.stringManipulator.pascalFromUnderscore(key),
-                "attribute": key,
-                "isArray": isArray
+                attributeType,
+                'nameCamel': this.stringManipulator.camelFromUnderscore(key),
+                'namePascal': this.stringManipulator.pascalFromUnderscore(key),
+                'attribute': key,
+                isArray,
             });
         });
 
@@ -104,27 +104,27 @@ export default class Schema {
             className: this.stringManipulator.pascalCase(schemaJson.schema.name),
             schemaName: this.stringManipulator.pascalCase(schemaJson.schema.name) + 'Schema',
             schemaFileName: this.schemaName(schemaJson.schema.name),
-            methods: methods
+            methods,
         });
-    };
+    }
 
 
     buildSchemaAttributes(attributes) {
-        let schemaAttributes = [];
+        const schemaAttributes = [];
 
         _.forEach(attributes, (attribute, key) => {
             let attributeType = '';
 
             if (typeof attribute.type === 'object') {
-                attributeType = "["+this.stringManipulator.pascalCase(attribute.type[0])+"]";
-            }else {
+                attributeType = '[' + this.stringManipulator.pascalCase(attribute.type[0]) + ']';
+            } else {
                 attributeType = this.stringManipulator.pascalCase(attribute.type);
             }
 
             schemaAttributes.push({
-                "type": attributeType,
-                "name": key,
-                "isIndexed": attribute.index
+                'type': attributeType,
+                'name': key,
+                'isIndexed': attribute.index,
             });
         });
 
@@ -139,7 +139,7 @@ export default class Schema {
         return template({
             collection: schemaJson.schema.name,
             isIndexed: schemaJson.schema.auto_index,
-            attributes: attributes
+            attributes,
         });
     }
 }
