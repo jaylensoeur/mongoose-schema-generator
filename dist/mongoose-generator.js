@@ -1,4 +1,4 @@
-#!/bin/node
+#!/usr/bin/env node
 'use strict';
 
 var _lodash = require('lodash');
@@ -9,15 +9,15 @@ var _fs = require('fs');
 
 var _fs2 = _interopRequireDefault(_fs);
 
-var _schema = require('../schema');
-
-var _schema2 = _interopRequireDefault(_schema);
-
 var _yamlWithImport = require('yaml-with-import');
 
 var _yamlWithImport2 = _interopRequireDefault(_yamlWithImport);
 
-var _stringManipulator = require('../string-manipulator');
+var _schema = require('./schema');
+
+var _schema2 = _interopRequireDefault(_schema);
+
+var _stringManipulator = require('./string-manipulator');
 
 var _stringManipulator2 = _interopRequireDefault(_stringManipulator);
 

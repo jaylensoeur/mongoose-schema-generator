@@ -1,9 +1,10 @@
-#!/bin/node
+#!/usr/bin/env node
 import _ from 'lodash';
 import fs from 'fs';
-import Schema from '../schema';
 import YamlWithImport from 'yaml-with-import';
-import StringManipulator from '../string-manipulator';
+
+import Schema from './schema';
+import StringManipulator from './string-manipulator';
 
 const command = process.argv[2];
 const commandArray = command.split(':');

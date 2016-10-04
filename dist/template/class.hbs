@@ -1,0 +1,36 @@
+/**
+ * DO NOT ADD CODE - THIS IS A GENERATED FILE
+ **/
+import mongoose from 'mongoose';
+import {{ schemaName }} from '../schema/{{ schemaFileName }}';
+
+class {{ className }} {
+
+    constructor() {
+        this.model = new {{ schemaName }}();
+    }
+
+    {{#each methods}}
+    /**
+     * @param { {{this.attributeType}}{{#if this.isArray}}[]{{/if}} } {{this.nameCamel}}
+     * @return { {{../className}} }
+     **/
+    set{{ this.namePascal }}({{this.nameCamel}}) {
+        this.model.{{this.attribute}} = {{this.nameCamel}};
+        return this;
+    }
+
+    {{/each}}
+
+    {{#each methods}}
+    /**
+     * @return { {{this.attributeType}}{{#if this.isArray}}[]{{/if}} }
+     **/
+    get{{this.namePascal}}() {
+        return this.model.{{this.attribute}};
+    }
+
+    {{/each}}
+}
+
+export default {{ className }};

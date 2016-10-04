@@ -1,6 +1,6 @@
 #usage:
 
-./node_modules/.bin/babel-node src/bin/mongoose-generator.js <controller:action> <directory>
+./node_modules/.bin/mongoose-generator.js <controller:action> <directory>
 
 for all models and schemas:
 ./node_modules/.bin/babel-node src/bin/mongoose-generator.js schema:all src/yml/
