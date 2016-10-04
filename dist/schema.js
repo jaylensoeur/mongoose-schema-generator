@@ -37,18 +37,18 @@ var Schema = function () {
 
     _createClass(Schema, [{
         key: 'generate',
-        value: function generate(fileName) {
-            this.generateModel(fileName);
-            this.generateSchema(fileName);
+        value: function generate(fileName, dir) {
+            this.generateModel(fileName, dir);
+            this.generateSchema(fileName, dir);
         }
     }, {
         key: 'generateSchema',
-        value: function generateSchema(fileName) {
+        value: function generateSchema(fileName, dir) {
             var schemaJson = this.yaml.read(fileName);
             var fileSchema = schemaJson.schema.name.toLowerCase().replace('_', '-') + '-schema.js';
 
-            var mongoose = __dirname + '/mongoose/';
-            var schemaPath = __dirname + '/mongoose/schema/';
+            var mongoose = dir + '/mongoose/';
+            var schemaPath = dir + '/mongoose/schema/';
 
             if (!this.fs.existsSync(mongoose)) {
                 this.fs.mkdir(mongoose);
@@ -62,12 +62,12 @@ var Schema = function () {
         }
     }, {
         key: 'generateModel',
-        value: function generateModel(fileName) {
+        value: function generateModel(fileName, dir) {
             var schemaJson = this.yaml.read(fileName);
             var file = schemaJson.schema.name.toLowerCase().replace('_', '-') + '.js';
 
-            var mongoose = __dirname + '/mongoose/';
-            var modelPath = __dirname + '/mongoose/model/';
+            var mongoose = dir + '/mongoose/';
+            var modelPath = dir + '/mongoose/model/';
 
             if (!this.fs.existsSync(mongoose)) {
                 this.fs.mkdir(mongoose);

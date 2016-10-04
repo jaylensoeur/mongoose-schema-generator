@@ -14,17 +14,17 @@ export default class Schema {
         this.fs = fs;
     }
 
-    generate(fileName) {
-        this.generateModel(fileName);
-        this.generateSchema(fileName);
+    generate(fileName, dir) {
+        this.generateModel(fileName, dir);
+        this.generateSchema(fileName, dir);
     }
 
-    generateSchema(fileName) {
+    generateSchema(fileName, dir) {
         const schemaJson = this.yaml.read(fileName);
         const fileSchema = schemaJson.schema.name.toLowerCase().replace('_', '-') + '-schema.js';
 
-        const mongoose = __dirname + '/mongoose/';
-        const schemaPath = __dirname + '/mongoose/schema/';
+        const mongoose = dir + '/mongoose/';
+        const schemaPath = dir + '/mongoose/schema/';
 
         if (!this.fs.existsSync(mongoose)) {
             this.fs.mkdir(mongoose);
@@ -37,12 +37,12 @@ export default class Schema {
         this.fs.writeFile(schemaPath + fileSchema, this.buildSchemaContent(schemaJson));
     }
 
-    generateModel(fileName) {
+    generateModel(fileName, dir) {
         const schemaJson = this.yaml.read(fileName);
         const file = schemaJson.schema.name.toLowerCase().replace('_', '-') + '.js';
 
-        const mongoose = __dirname + '/mongoose/';
-        const modelPath = __dirname + '/mongoose/model/';
+        const mongoose = dir + '/mongoose/';
+        const modelPath = dir + '/mongoose/model/';
 
         if (!this.fs.existsSync(mongoose)) {
             this.fs.mkdir(mongoose);

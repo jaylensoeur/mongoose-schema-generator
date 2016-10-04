@@ -15,8 +15,8 @@ describe('', () => {
 
     it('schema generate', done => {
         const schema = new Schema(yaml, fs, new StringManipulator());
-        schema.generate(__dirname + '/fixtures/blog.yml');
-        schema.generate(__dirname + '/fixtures/user.yml');
+        schema.generate(__dirname + '/fixtures/blog.yml', __dirname);
+        schema.generate(__dirname + '/fixtures/user.yml', __dirname);
         done();
     });
 });

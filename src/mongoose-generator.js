@@ -13,14 +13,14 @@ const controller = commandArray[0];
 const action = commandArray[1];
 
 const directory = process.argv[3];
-console.log(directory);
+
 const generateModel = () => {
     const yamlWithImport = new YamlWithImport();
     const stringManipulator = new StringManipulator();
     const schema = new Schema(yamlWithImport, fs, stringManipulator);
     fs.readdir(directory, (err, files) => {
         _.forEach(files, (file) => {
-            schema.generateModel(directory + file);
+            schema.generateModel(directory + file, directory);
         });
     });
 };
@@ -31,7 +31,7 @@ const generateSchema = () => {
     const schema = new Schema(yamlWithImport, fs, stringManipulator);
     fs.readdir(directory, (err, files) => {
         _.forEach(files, (file) => {
-            schema.generateSchema(directory + file);
+            schema.generateSchema(directory + file, directory);
         });
     });
 };

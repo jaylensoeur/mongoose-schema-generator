@@ -30,14 +30,14 @@ var controller = commandArray[0];
 var action = commandArray[1];
 
 var directory = process.argv[3];
-console.log(directory);
+
 var generateModel = function generateModel() {
     var yamlWithImport = new _yamlWithImport2.default();
     var stringManipulator = new _stringManipulator2.default();
     var schema = new _schema2.default(yamlWithImport, _fs2.default, stringManipulator);
     _fs2.default.readdir(directory, function (err, files) {
         _lodash2.default.forEach(files, function (file) {
-            schema.generateModel(directory + file);
+            schema.generateModel(directory + file, directory);
         });
     });
 };
@@ -48,7 +48,7 @@ var generateSchema = function generateSchema() {
     var schema = new _schema2.default(yamlWithImport, _fs2.default, stringManipulator);
     _fs2.default.readdir(directory, function (err, files) {
         _lodash2.default.forEach(files, function (file) {
-            schema.generateSchema(directory + file);
+            schema.generateSchema(directory + file, directory);
         });
     });
 };
